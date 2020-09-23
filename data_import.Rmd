@@ -38,3 +38,23 @@ skimr::skim(litters_df)
 You can do view() function in the console and it will load the dataset in a separate window. Try to avoid doing it from up here because it might screw up knitting process. 
 
 A dbl is a particular type of number in computer science/programming - we should think of these as numbers. 
+
+CSV stands for comma separated values
+
+##Options to read_csv
+
+This is useful when the csv given to you is strangely structured, maybe a description of the dataset in the first few rows. 
+```{r}
+litters_df = read_csv("./data/FAS_litters.csv", skip = 10, col_names = FALSE)
+litters_df
+```
+
+This is a way to draw out missing values however they are stored. You can also do this with ".", 888, or whatever you want. 
+```{r}
+litters_df = read_csv("./data/FAS_litters.csv", na = c("","NA",999))
+litters_df
+```
+
+The CSV reader will attempt to define the column variable types, we can define this ourselves as well. 
+Check out '?read_csv()' for more information 
+

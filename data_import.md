@@ -142,3 +142,88 @@ might screw up knitting process.
 
 A dbl is a particular type of number in computer science/programming -
 we should think of these as numbers.
+
+CSV stands for comma separated values
+
+\#\#Options to read\_csv
+
+This is useful when the csv given to you is strangely structured, maybe
+a description of the dataset in the first few rows.
+
+``` r
+litters_df = read_csv("./data/FAS_litters.csv", skip = 10, col_names = FALSE)
+```
+
+    ## Parsed with column specification:
+    ## cols(
+    ##   X1 = col_character(),
+    ##   X2 = col_character(),
+    ##   X3 = col_double(),
+    ##   X4 = col_double(),
+    ##   X5 = col_double(),
+    ##   X6 = col_double(),
+    ##   X7 = col_double(),
+    ##   X8 = col_double()
+    ## )
+
+``` r
+litters_df
+```
+
+    ## # A tibble: 40 x 8
+    ##    X1    X2                 X3    X4    X5    X6    X7    X8
+    ##    <chr> <chr>           <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+    ##  1 Con8  #3/5/2/2/95      28.5  NA      20     8     0     8
+    ##  2 Con8  #5/4/3/83/3      28    NA      19     9     0     8
+    ##  3 Con8  #1/6/2/2/95-2    NA    NA      20     7     0     6
+    ##  4 Con8  #3/5/3/83/3-3-2  NA    NA      20     8     0     8
+    ##  5 Con8  #2/2/95/2        NA    NA      19     5     0     4
+    ##  6 Con8  #3/6/2/2/95-3    NA    NA      20     7     0     7
+    ##  7 Mod7  #59              17    33.4    19     8     0     5
+    ##  8 Mod7  #103             21.4  42.1    19     9     1     9
+    ##  9 Mod7  #1/82/3-2        NA    NA      19     6     0     6
+    ## 10 Mod7  #3/83/3-2        NA    NA      19     8     0     8
+    ## # … with 30 more rows
+
+This is a way to draw out missing values however they are stored. You
+can also do this with “.”, 888, or whatever you want.
+
+``` r
+litters_df = read_csv("./data/FAS_litters.csv", na = c("","NA",999))
+```
+
+    ## Parsed with column specification:
+    ## cols(
+    ##   Group = col_character(),
+    ##   `Litter Number` = col_character(),
+    ##   `GD0 weight` = col_double(),
+    ##   `GD18 weight` = col_double(),
+    ##   `GD of Birth` = col_double(),
+    ##   `Pups born alive` = col_double(),
+    ##   `Pups dead @ birth` = col_double(),
+    ##   `Pups survive` = col_double()
+    ## )
+
+``` r
+litters_df
+```
+
+    ## # A tibble: 49 x 8
+    ##    Group `Litter Number` `GD0 weight` `GD18 weight` `GD of Birth`
+    ##    <chr> <chr>                  <dbl>         <dbl>         <dbl>
+    ##  1 Con7  #85                     19.7          34.7            20
+    ##  2 Con7  #1/2/95/2               27            42              19
+    ##  3 Con7  #5/5/3/83/3-3           26            41.4            19
+    ##  4 Con7  #5/4/2/95/2             28.5          44.1            19
+    ##  5 Con7  #4/2/95/3-3             NA            NA              20
+    ##  6 Con7  #2/2/95/3-2             NA            NA              20
+    ##  7 Con7  #1/5/3/83/3-3/2         NA            NA              20
+    ##  8 Con8  #3/83/3-3               NA            NA              20
+    ##  9 Con8  #2/95/3                 NA            NA              20
+    ## 10 Con8  #3/5/2/2/95             28.5          NA              20
+    ## # … with 39 more rows, and 3 more variables: `Pups born alive` <dbl>, `Pups
+    ## #   dead @ birth` <dbl>, `Pups survive` <dbl>
+
+The CSV reader will attempt to define the column variable types, we can
+define this ourselves as well. Check out ‘?read\_csv()’ for more
+information

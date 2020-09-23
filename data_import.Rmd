@@ -6,6 +6,8 @@ output: github_document
 Loading this package because it has tools we need.
 ```{r setup}
 library(tidyverse)
+library(readxl)
+library(haven)
 ```
 
 ## Read in some data. 
@@ -57,4 +59,24 @@ litters_df
 
 The CSV reader will attempt to define the column variable types, we can define this ourselves as well. 
 Check out '?read_csv()' for more information 
+
+##Other file formats
+
+Excel file (ran the readxl package at the top first)
+```{r}
+mlb_df = read_excel("./data/mlb11.xlsx")
+
+mlb_df
+```
+
+Go to '?read_excel' for more help 
+
+SAS File (run Haven package at top first)
+```{r}
+pulse_df = read_sas("./data/public_pulse_data.sas7bdat")
+pulse_df
+
+## You'd probably want to clean this using the janitor function but for now I'm not doing that 
+```
+
 

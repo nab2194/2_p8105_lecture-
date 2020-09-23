@@ -1,21 +1,24 @@
 ---
-title: "Simple document"
-output: html_document
+title: "Lecture 2 Example: Data Import"
+output: github_document
 ---
 
-I'm an R Markdown document! 
-
-# Section 1
-
-Here's a **code chunk** that samples from 
-a _normal distribution_:
-
-```{r}
-samp = rnorm(100)
-length(samp)
+Loading this package because it has tools we need.
+```{r setup}
+library(tidyverse)
 ```
 
-# Section 2
+## Read in some data. 
+If you click in the data using file>read-in etc. you are not doing something reproducible, this is why it is better if it exists in your code. 
 
-I can take the mean of the sample, too!
-The mean is `r mean(samp)`.
+Absolute directions give the very first documents on your computer. Relative paths are like saying.. "starting from where you are now, take x step" 
+
+```{r}
+litters_df = read.csv("./data/FAS_litters.csv")
+litters_df = janitor::clean_names(litters_df)
+
+```
+
+## Take a look at the data 
+
+

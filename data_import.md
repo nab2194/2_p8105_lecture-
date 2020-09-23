@@ -286,3 +286,15 @@ pulse_df
 ``` r
 ## You'd probably want to clean this using the janitor function but for now I'm not doing that 
 ```
+
+\#\#Comparison with Base R
+
+Why not use ‘read.csv’? Never use this - always use ‘read\_csv’.
+
+\#\#Exporting data
+
+Export the mlb sub-table
+
+``` r
+write_csv(mlb_df,"./data/mlb_subtable.csv")
+```

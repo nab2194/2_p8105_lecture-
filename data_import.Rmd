@@ -14,11 +14,27 @@ If you click in the data using file>read-in etc. you are not doing something rep
 Absolute directions give the very first documents on your computer. Relative paths are like saying.. "starting from where you are now, take x step" 
 
 ```{r}
-litters_df = read.csv("./data/FAS_litters.csv")
+litters_df = read_csv("./data/FAS_litters.csv")
 litters_df = janitor::clean_names(litters_df)
 
 ```
 
 ## Take a look at the data 
 
+```{r}
+litters_df
+```
 
+```{r}
+head(litters_df)
+
+tail(litters_df)
+```
+
+```{r}
+skimr::skim(litters_df)
+```
+
+You can do view() function in the console and it will load the dataset in a separate window. Try to avoid doing it from up here because it might screw up knitting process. 
+
+A dbl is a particular type of number in computer science/programming - we should think of these as numbers. 
